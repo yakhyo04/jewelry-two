@@ -1,0 +1,17 @@
+.announcement{
+    width: 100%;
+    height: 50px;
+    background-color: #1D1D1D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.announcement__link{
+    font-family: "Minion Pro";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #F3E7E0;
+    text-decoration: none;
+}

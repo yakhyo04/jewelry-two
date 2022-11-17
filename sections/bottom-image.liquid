@@ -1,0 +1,18 @@
+{{ 'style.bottom-image.css' | asset_url | stylesheet_tag }}
+
+<div class="bottomImage">
+    <img class="bottomImage__image" src="{{ section.settings.bottom_image.src | img_url: '1920x' }}" alt="{{ section.settings.bottom_image.alt }}">
+</div>
+
+{% schema %}
+    {
+        "name": "Bottom Image",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "bottom_image",
+                "label": "Bottom Image"
+            }
+        ]
+    }
+{% endschema %}

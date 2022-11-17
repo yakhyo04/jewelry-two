@@ -1,0 +1,35 @@
+.header{
+    position: absolute;
+    width: 100%;
+    z-index: 99999;
+}
+.header__container{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.header__nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+.header__list{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    grid-gap: 30px;
+    padding: 0;
+}
+.home .header__link{
+    color: #fff;
+}
+.header__link{
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}

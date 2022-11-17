@@ -1,0 +1,41 @@
+{{ 'style.subscribe.css' | asset_url | stylesheet_tag }}
+
+<div class="subscribe">
+    <div class="subscribe-content">
+      <span class="subscribe-text"
+        >Lorem ipsum dolor sit amet consectetur adipiscing.</span
+      >
+      <input
+        class="subscribe-input"
+        type="text"
+        placeholder="Enter your Email"
+      />
+      <!-- {% render 'button' title: 'Sign up' link: '/' %} -->
+    </div>
+    <button class="subscribe-btn">Sign up</button>
+  </div>
+
+<style>
+    .subscribe{
+        background-image: url({{ section.settings.subscribe_image.src | img_url: '1920x' }});
+    }
+</style>
+
+{% schema %}
+  {
+    "name": "Subscribe",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "subscribe_image",
+            "label": "Image Picker"
+        },
+        {
+          "type": "text",
+          "id": "subscribe_text",
+          "default": "Lorem ipsum dolor sit amet consectetur adipiscing.",
+          "label": "Text Label"
+        }
+    ]
+  }
+{% endschema %}

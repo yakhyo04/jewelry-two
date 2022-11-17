@@ -1,0 +1,63 @@
+{{ 'style.featured-products.css' | asset_url | stylesheet_tag }}
+
+<div class="products">
+    <div class="products__container">
+        <h3 class="product__title">{{ section.settings.title }}</h3>
+        <div class="products__wrapper">
+            {% for product in section.settings.product_lists %}
+            <div class="product__item" id="shield">
+                    <img class="product__image" src="{{ product.featured_image.src | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
+                    <!-- <div class="product__content"> -->
+                        <h3>{{ product.title }}</h3>
+                    <h5 class="product__money" >{{ product.price | money }}</h5>
+                    <a class="product__link" href="{{ section.settings.product_link }}">{{ section.settings.product_title }}</a>
+                    <!-- </div> -->
+                </div>
+                {% endfor %}
+        </div>
+        {% render 'button' title: section.settings.button_title link: section.settings.button_url %}
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Featured Products",
+        "settings": [
+            {
+                "type": "product_list",
+                "id": "product_lists",
+                "label": "Product List"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "default": "jewelry that not only entices the eye but enchants the soul",
+                "label": "Title Label"
+            },
+            {
+                "type": "text",
+                "id": "button_title",
+                "default": "button",
+                "label": "Button Title"
+            },
+            {
+                "type": "url",
+                "id": "button_url",
+                "default": "/",
+                "label": "Button URL"
+            },
+            {
+                "type": "url",
+                "id": "product_link",
+                "default": "/",
+                "label": "Link Label"
+            },
+            {
+                "type": "text",
+                "id": "product_title",
+                "default": "link to",
+                "label": "Link Title Label"
+            }
+        ]
+    }
+{% endschema %}

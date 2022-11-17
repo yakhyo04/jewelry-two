@@ -1,0 +1,73 @@
+.footer {
+    padding: 0 20px;
+    background: #e8ccba;
+  }
+  
+  .footer-content {
+    display: flex;
+  }
+  
+  .footer-links-list {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-right: 1px solid #1d1d1d;
+    padding-top: 30px;
+  }
+  
+  .footer-links-list2 {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-left: 1px solid #1d1d1d;
+    padding-top: 30px;
+  }
+  
+  .footer-img {
+    width: 50%;
+    text-align: center;
+    padding-top: 30px;
+  }
+  
+  .footer-log {
+    padding-bottom: 20px;
+    padding: 50px 0;
+  }
+  
+  .footer-link {
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-family: "SF New Republic";
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #1d1d1d;
+  }
+  
+  .footer-socials {
+    margin: 0 auto;
+    border-top: 1px solid #1d1d1d;
+    padding-top: 5px;
+    padding: 15px 0;
+  }
+  
+  .footer-social {
+    font-family: "SF New Republic";
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #1d1d1d;
+    text-decoration: none;
+  }
+  

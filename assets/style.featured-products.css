@@ -1,0 +1,73 @@
+.products{
+    background-color: #F3E7E0;
+    padding: 69px;
+}
+.products__container{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.product__title{
+    width: 668px;
+    margin: 60px auto;
+    text-align: center;
+}
+.products__wrapper{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    grid-gap: 40px;
+}
+.product__item{
+    /* width: 255px; */
+    /* height: 386px; */
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    /* clip-path: polygon(100% 0%, 100% 0%, 100% 10%, 100% 100%, 0% 100%, 0% 0%); */
+    /* clip-path: polygon(0 88.05px,28px 28px,88.05px 0,calc(100% - 88.05px) 0,calc(100% - 28px) 28px,100% 88.05px,100% 100%,0 100%); */
+}
+.product__money{
+    margin: 4px 0 10px 0;
+}
+.product__link{
+    color: #C09188;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-bottom: 30px;
+}
+.product__item:first-child,
+.product__item:last-child{
+    margin-top: -220px;
+}
+.richtext__cta--wrapper{
+    width: 253px;
+    height: 44px;
+    background: #1d1d1d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    margin: 60px auto;
+}
+.richtext__cta{
+    border-radius: 2px;
+    font-family: "SF New Republic";
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #f3e7e0;
+    cursor: pointer;
+    text-decoration: none;
+}

@@ -1,0 +1,47 @@
+{{ 'style.about.css' | asset_url | stylesheet_tag }}
+
+<div class="about">
+    <div class="about__richtext">
+        <h1 class="about__title">{{ section.settings.about_title }}</h1>
+        <a class="about__link" href="{{ section.settings.about_cta_link }}">{{ section.settings.about_cta }}</a>
+    </div>
+    <a href="#footer" class="about__arrow">
+        {% render 'arrow-bottom' %}
+    </a>
+</div>
+
+<style>
+    .about{
+        background-image: url({{ section.settings.about_banner.src | img_url: '1920x' }});
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "About",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "about_banner",
+                "label": "Background Banner"
+            },
+            {
+                "type": "text",
+                "id": "about_title",
+                "label": "Label",
+                "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Amet."
+            },
+            {
+                "type": "url",
+                "id": "about_cta_link",
+                "label": "Cta link"
+            },
+            {
+                "type": "text",
+                "id": "about_cta",
+                "label": "Cta Label",
+                "default": "link"
+            }
+        ]
+    }
+{% endschema %}

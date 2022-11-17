@@ -1,0 +1,58 @@
+{{ 'style.header.css' | asset_url | stylesheet_tag }}
+
+<header class="header">
+    <div class="header__container">
+    <div class="header__nav">
+        <ul class="header__list">
+            {% for link in linklists.main-menu.links %}
+                <li class="header__item">
+                    <a class="header__link" href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="header__logo--wrapper">
+            <a href="{{ section.settings.link.url }}">
+                {% if template == 'index' %}
+                    <img class="header__image" width="144px" height="80px" src="{{ section.settings.logo.src | img_url: 'large' }}" alt="{{ section.settings.logo.alt }}">
+                {% else %}
+                    <img class="header__image" width="144px" height="80px" src="{{ section.settings.dark_logo.src | img_url: 'large' }}" alt="{{ section.settings.dark_logo.alt }}">
+                {% endif %}
+            </a>
+        </div>
+        <ul class="header__list">
+            <li class="header__item">
+                <a class="header__link" href="#">Search</a>
+            </li>
+            <li class="header__item">
+                <a class="header__link" href="#">Account</a>
+            </li>
+            <li class="header__item">
+                <a class="header__link" href="#">Cart (0)</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</header>
+
+{% schema %}
+    {
+        "name": "Header",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Logo"
+            },
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Logo URL"
+            },
+            {
+                "type": "image_picker",
+                "id": "dark_logo",
+                "label": "Dark Logo"
+            }
+        ]
+    }
+{% endschema %}

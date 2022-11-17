@@ -1,0 +1,50 @@
+.banner__container{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.banner__background{
+    padding: 46px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 100px 0;;
+}
+.banner__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #E8CCBA;
+    border: 1px solid #1D1D1D;
+    /* height: 100%; */
+    /* padding: 100px; */
+    margin: 0 60px;
+}
+.banner__image--wrapper{
+    width: 50%;
+    /* height: 100%; */
+}
+.banner__image{
+    width: 100%;
+    height: 100%;
+}
+.banner__content{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

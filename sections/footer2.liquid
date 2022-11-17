@@ -1,0 +1,50 @@
+{{ 'style.footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="footer">
+    <div class="footer-content">
+      <div class="footer-links-list">
+        {% for link in linklists.footer.links %}
+          <a class="footer-link" href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      </div>
+
+      <div class="footer-img">
+        <a href="#">
+          <img class="footer-log" src="{{ section.settings.footer_logo.src | img_url: 'medium' }}" alt="{{ section.settings.footer_logo.alt }}" />
+        </a>
+
+        <div class="footer-socials">
+          <a class="footer-social" href="#">1234 Placeholder St. New York, NY</a>
+          <a class="footer-social" href="#">Privacy Policy</a>
+          <a class="footer-social" href="#">© 2022 D.Gregory</a>
+        </div>
+      </div>
+
+      <div class="footer-links-list2">
+        {% for link in linklists.footer-right-menu.links %}
+          <a class="footer-link" href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+        <a class="footer-link" href="#"
+          ><img src="{{ section.settings.social_icon.src | img_url: 'medium' }}" alt="{{ section.settings.social_icon.alt }}"
+        /></a>
+      </div>
+    </div>
+  </footer>
+
+{% schema %}
+  {
+    "name": "footer",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "footer_logo",
+        "label": "Footer Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "social_icon",
+        "label": "Social Media Icon"
+      }
+    ]
+  }
+{% endschema %}

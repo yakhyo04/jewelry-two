@@ -1,0 +1,65 @@
+{{ 'style.banner-section.css' | asset_url | stylesheet_tag }}
+
+<div class="banner">
+    <div class="banner__container">
+        <div class="banner__background">
+        <div class="banner__wrapper">
+            <div class="banner__image--wrapper">
+                <img class="banner__image" src="{{ section.settings.banner_image.src | img_url: 'medium' }}" alt="{{ section.settings.banner_image.alt | escape }}">
+            </div>
+            <div class="banner__content">
+                <h2>{{ section.settings.banner_title }}</h2>
+                <p>{{ section.settings.banner_description }}</p>
+                <div>
+                    {% render 'button' title: section.settings.banner_url_text link: section.settings.banner_url %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<style>
+    .banner__background{
+        background-image: url({{ '../assets/icon-lines.svg' | asset_url }});
+        /* border: 1px solid black;
+        margin: 65px; */
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "Banner",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "banner_image",
+                "label": "Banner Image Picker"
+            },
+            {
+                "type": "text",
+                "id": "banner_title",
+                "default": "Lorem ipsum dolor set amet",
+                "label": "Banner Title Lable"
+            },
+            {
+                "type": "text",
+                "id": "banner_description",
+                "default": "Banner Description lorem ipsum dolor set ampe",
+                "label": "Banner Description Label"
+            },
+            {
+                "type": "url",
+                "id": "banner_url",
+                "default": "/",
+                "label": "Banner Url"
+            },
+            {
+                "type": "text",
+                "id": "banner_url_text",
+                "default": "Banner Button",
+                "label": "Banner Button Label"
+            }
+        ]
+    }
+{% endschema %}
