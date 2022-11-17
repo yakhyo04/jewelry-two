@@ -32,6 +32,32 @@
           "footer_logo": "shopify:\/\/shop_images\/dark_logo.png",
           "social_icon": "shopify:\/\/shop_images\/icon.jpg"
         }
+      },
+      "bottom-image": {
+        "type": "bottom-image",
+        "settings": {
+          "bottom_image": "shopify:\/\/shop_images\/background-image-1.png"
+        }
+      },
+      "type-list": {
+        "type": "type-list",
+        "settings": {
+        }
+      },
+      "plp-sort": {
+        "type": "plp-sort",
+        "settings": {
+        }
+      },
+      "sort-filter": {
+        "type": "sort-filter",
+        "settings": {
+        }
+      },
+      "plp-products": {
+        "type": "plp-products",
+        "settings": {
+        }
       }
     },
     "content_for_index": [
