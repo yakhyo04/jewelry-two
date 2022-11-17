@@ -3,6 +3,10 @@
 <div class="banner">
     <div class="banner__container">
         <div class="banner__background">
+            <span class="first"><img src="{{ 'first.svg' | asset_url }}" alt=""></span>
+            <span class="second"><img src="{{ 'second.svg' | asset_url }}" alt=""></span>
+            <span class="third"><img src="{{ 'third.svg' | asset_url }}" alt=""></span>
+            <span class="fourth"><img src="{{ 'fourth.svg' | asset_url }}" alt=""></span>
         <div class="banner__wrapper">
             <div class="banner__image--wrapper">
                 <img class="banner__image" src="{{ section.settings.banner_image.src | img_url: 'medium' }}" alt="{{ section.settings.banner_image.alt | escape }}">
@@ -21,9 +25,29 @@
 
 <style>
     .banner__background{
-        background-image: url({{ '../assets/icon-lines.svg' | asset_url }});
-        /* border: 1px solid black;
-        margin: 65px; */
+        border: 1px solid black;
+        margin: 60px;
+        position: relative;
+    }
+    .first{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .second{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .third{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .fourth{
+        position: absolute;
+        bottom: 0;
+        right: 0;
     }
 </style>
 

@@ -1,0 +1,11 @@
+{{ 'style.type-list.css' | asset_url | stylesheet_tag }}
+
+<div class="list">
+    <div class="list__wrapper">
+        <div class="lists">
+            {% for link in linklists.type-list.links %}
+                <a class="list__link" href="{{ link.url }}">{{ link.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

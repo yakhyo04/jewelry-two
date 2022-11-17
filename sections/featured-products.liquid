@@ -6,18 +6,47 @@
         <div class="products__wrapper">
             {% for product in section.settings.product_lists %}
             <div class="product__item" id="shield">
-                    <img class="product__image" src="{{ product.featured_image.src | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
-                    <!-- <div class="product__content"> -->
+                    <img class="product__image" src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt }}">
+                    <div class="product__content">
                         <h3>{{ product.title }}</h3>
                     <h5 class="product__money" >{{ product.price | money }}</h5>
                     <a class="product__link" href="{{ section.settings.product_link }}">{{ section.settings.product_title }}</a>
-                    <!-- </div> -->
+                    </div>
                 </div>
                 {% endfor %}
         </div>
         {% render 'button' title: section.settings.button_title link: section.settings.button_url %}
     </div>
 </div>
+
+<style>
+    .product__item{
+        background-image: url('../assets/svg.product-tile.svg');
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 256px;
+        height: 100%;
+    }
+    .product__image{
+        position: relative;
+        overflow: hidden;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        margin-top: 10%;
+        width: 100%;
+        height: 100%;
+    }
+    .product__content{
+        position: absolute;
+        bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+</style>
 
 {% schema %}
     {

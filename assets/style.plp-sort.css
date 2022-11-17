@@ -1,0 +1,29 @@
+.sort__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 40px;
+    padding-top: 36px;
+}
+.sort__label{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #1D1D1D;
+    display: block;
+}
+.sort__select{
+    width: 314px;
+    height: 40px;
+    color: #C09188;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 13px 14px;
+    outline: none;
+    border: none;
+}

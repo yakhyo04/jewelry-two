@@ -1,0 +1,28 @@
+.list{
+    padding: 8px 36px 12px 36px;
+    border-bottom: 1px solid #1D1D1D;
+}
+.list__wrapper{
+    width: 1440px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.lists{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.list__link{
+    text-decoration: none;
+    padding: 10px 51px;
+    font-weight: 700;
+    color: #1D1D1D;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+.list__link:hover{
+    background-color: #fff;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+}

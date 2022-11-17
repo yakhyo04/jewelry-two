@@ -1,0 +1,20 @@
+{{ 'style.cart-snippet.css' | asset_url | stylesheet_tag }}
+
+<div class="carts">
+
+<div class="cart__wrapper">
+    {% for product in collection.products %}
+    <div class="cart">
+      <!-- <a class="cart__content" href="{{ product.url }}"> -->
+        <img class="cart__image" src="{{ product.featured_image.src | img_url: 'large' }}" alt="">
+        <div class="cart__content">
+          <h3 class="cart__title">{{ product.title }}</h3>
+          <h4 class="cart__price">{{ product.price | money }}</h4>
+          <h4><a class="cart__link" href="{{ product.url }}">New collection</a></h4>
+        </div>
+      <!-- </a> -->
+    </div>
+    {% endfor %}
+  </div>
+
+</div>

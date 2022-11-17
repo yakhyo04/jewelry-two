@@ -21,14 +21,14 @@
 .product__item{
     /* width: 255px; */
     /* height: 386px; */
-    background-color: #fff;
+    /* background-color: #fff; */
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
+    /* border-top-left-radius: 50%;
+    border-top-right-radius: 50%; */
     /* clip-path: polygon(100% 0%, 100% 0%, 100% 10%, 100% 100%, 0% 100%, 0% 0%); */
     /* clip-path: polygon(0 88.05px,28px 28px,88.05px 0,calc(100% - 88.05px) 0,calc(100% - 28px) 28px,100% 88.05px,100% 100%,0 100%); */
 }

@@ -67,8 +67,12 @@
     color: #1d1d1d;
   }
   
-  .subscribe-btn {
+  .subscribe-btn--wrapper{
     position: absolute;
+    margin-top: 270px;
+  }
+
+  .subscribe-btn {
     width: 253px;
     height: 44px;
     background: #1d1d1d;
