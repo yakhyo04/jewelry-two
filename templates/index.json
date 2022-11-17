@@ -3,26 +3,49 @@
     "about": {
       "type": "about",
       "settings": {
+        "about_banner": "shopify:\/\/shop_images\/background-image.png",
+        "about_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Amet.",
+        "about_cta_link": "",
+        "about_cta": "link"
       }
     },
     "featured-products": {
       "type": "featured-products",
       "settings": {
+        "product_lists": [
+          "alla",
+          "button-ruby",
+          "medici",
+          "ophelia"
+        ],
+        "title": "jewelry that not only entices the eye but enchants the soul",
+        "button_title": "button",
+        "button_url": "\/",
+        "product_link": "\/",
+        "product_title": "link to"
       }
     },
     "bottom-image": {
       "type": "bottom-image",
       "settings": {
+        "bottom_image": "shopify:\/\/shop_images\/background-image-1.png"
       }
     },
     "banner-section": {
       "type": "banner-section",
       "settings": {
+        "banner_image": "shopify:\/\/shop_images\/image.png",
+        "banner_title": "Lorem ipsum dolor set amet",
+        "banner_description": "Banner Description lorem ipsum dolor set ampe",
+        "banner_url": "\/",
+        "banner_url_text": "Banner Button"
       }
     },
     "subscribe": {
       "type": "subscribe",
       "settings": {
+        "subscribe_image": "shopify:\/\/shop_images\/BackgroundImage-1_3.png",
+        "subscribe_text": "Lorem ipsum dolor sit amet consectetur adipiscing."
       }
     }
   },
