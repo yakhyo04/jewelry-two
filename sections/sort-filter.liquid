@@ -46,7 +46,7 @@
                   <script>
                     console.log({{ collection | json }});
                   </script>
-                <option value="{{ collection.title }}">{{ collection.title | link_to: collection.handle }}</option>
+                <option value="{{ collection.title }}">{{ collection.title }}</option>
                 {% endfor %}
             </select>
           </div>
