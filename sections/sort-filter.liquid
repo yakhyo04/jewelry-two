@@ -40,10 +40,18 @@
         </div>
 
         <div class="sort__collections">
-            <p class="sort__label" for="sort_collections">Collections</p>
-            <select class="sort__select" id="sort_collections">
-                <option value="All">All</option>
+          <p class="sort__label" for="sort_collections">Collections</p>
+          <select class="sort__select" id="sort_collections">
+              {% for collection in collections %}
+                  <script>
+                    console.log({{ collection | json }});
+                  </script>
+                <option value="{{ collection.title }}">{{ collection.title | link_to: collection.handle }}</option>
+                {% endfor %}
             </select>
-        </div>
+          </div>
     </div>
     </div>
+
+    <!-- Shopify.queryParams.sort_by = value;
+    location.search = new URLSearchParams(Shopify.queryParams).toString(); -->

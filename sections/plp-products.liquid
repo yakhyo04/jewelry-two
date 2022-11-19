@@ -1,6 +1,23 @@
 {{ 'style.cart-snippet.css' | asset_url | stylesheet_tag }}
 
+{% paginate collection.products by 6 %}
 <div class="carts">
+  {% assign banner_image = collection.metafields.accentuate.banner_image %}
+  {% assign banner_content = collection.metafields.accentuate.banner_content %}
+  {% for item in (1..banner_content.size) %}
+    <div>
+      <div>
+        {% if banner_image[forloop.index0] != blank %}
+          <img src="{{ banner_image[forloop.index0][0].src }}" alt="">
+        {% endif %}
+      </div>
+      <div>
+        {% if banner_content[forloop.index0] != blank %}
+          {{ banner_content[forloop.index0] }}
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
 
 <div class="cart__wrapper">
     {% for product in collection.products %}
@@ -18,3 +35,18 @@
   </div>
 
 </div>
+
+<div class="pagination">
+  <a href="{{ paginate.previous.url }}" class="pagination__link h4 {% if paginate.previous.url %}pagination-active{% endif %}">previous</a>
+  <div class="pagination__content">
+    {% for part in paginate.parts %}
+      {% if part.is_link %}
+        <h3 class="pagination__content--number">{{ part.title | link_to: part.url }}</h3>
+      {% else %}
+        <h3 class="pagination__content--link">{{ part.title }}</h3>
+      {% endif %}
+    {% endfor %}
+  </div>  
+  <a href="{{ paginate.next.url }}" class="pagination__link h4 {% if paginate.next.url %}pagination-active{% endif %}">next</a>
+</div>
+{% endpaginate %}

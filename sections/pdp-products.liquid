@@ -1,0 +1,5 @@
+{% for item in product.images %}
+    <img src="{{ item.src | img_url: '720x900' }}" alt="{{ item.alt | escape }}">
+{% endfor %}
+
+<h1>{{ product.title }}</h1>
