@@ -5,7 +5,7 @@
   {% assign banner_image = collection.metafields.accentuate.banner_image %}
   {% assign banner_content = collection.metafields.accentuate.banner_content %}
   {% for item in (1..banner_content.size) %}
-    <div>
+    <div class="cart__additional">
       <div>
         {% if banner_image[forloop.index0] != blank %}
           <img src="{{ banner_image[forloop.index0][0].src }}" alt="">
