@@ -6,15 +6,16 @@
         <div class="products__wrapper">
             {% for product in section.settings.product_lists %}
             <div class="product__item" id="shield">
-                    <img class="product__image" src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt }}">
-                    <div class="product__content">
-                        <h3>{{ product.title }}</h3>
+                <img class="product__image" src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt }}">
+                <div class="product__content">
+                    <h3>{{ product.title }}</h3>
                     <h5 class="product__money" >{{ product.price | money }}</h5>
-                    <a class="product__link" href="{{ section.settings.product_link }}">{{ section.settings.product_title }}</a>
-                    </div>
+                    <a class="product__link" href="{{ product.url }}">{{ product.tags[0] }}</a>
                 </div>
-                {% endfor %}
+            </div>
+            {% endfor %}
         </div>
+            <!-- {% render 'product' image_link: product.featured_image.src | img_url: 'large' image_alt: product.featured_image.alt title: product.title price: product.price | money link: section.settings.product_link text: section.settings.product_title  %} -->
         {% render 'button' title: section.settings.button_title link: section.settings.button_url %}
     </div>
 </div>

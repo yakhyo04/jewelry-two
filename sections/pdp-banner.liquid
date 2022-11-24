@@ -1,0 +1,43 @@
+{{ 'style.pdp-banner.css' | asset_url | stylesheet_tag }}
+
+{% assign banner_image = product.metafields.accentuate.pdp_image %}
+{% assign banner_text = product.metafields.accentuate.pdp_content %}
+
+{% if product.metafields.accentuate.pdp_content  %}
+<div class="pdp-sections__wrapper">
+    {% for item in (1..banner_text.size) %}
+        <div class="pdp-sections">
+            <div class="pdp-sections__div pdp-product__content">
+                {% if banner_text[forloop.index0] != blank %}
+                    {{ banner_text[forloop.index0] }}
+                {% endif %}
+            </div>
+            <div class="pdp-sections__div">
+                {% if banner_image[forloop.index0] != blank %}
+                    <img class="pdp-sections__image" src="{{ banner_image[forloop.index0][0].src }}" alt="">
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<style>
+    .pdp-sections__wrapper{
+        padding: 100px 150px;
+        background-image: url({{ section.settings.pdp_image.src | img_url: '1440x' }});
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "PDP Section",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "pdp_image",
+                "label": "PDP Section Background Image"
+            }
+        ]
+    }
+{% endschema %}

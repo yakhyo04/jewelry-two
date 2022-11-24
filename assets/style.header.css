@@ -2,6 +2,7 @@
     position: absolute;
     width: 100%;
     z-index: 99999;
+    border-bottom: 1px solid black;
 }
 .header__container{
     width: 100%;
@@ -13,6 +14,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 30px;
+}
+.home .header{
+    border: none;
 }
 .header__list{
     list-style-type: none;

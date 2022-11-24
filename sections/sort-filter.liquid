@@ -42,6 +42,7 @@
         <div class="sort__collections">
           <p class="sort__label" for="sort_collections">Collections</p>
           <select class="sort__select" id="sort_collections">
+            <option value="All">All</option>
               {% for collection in collections %}
                   <script>
                     console.log({{ collection | json }});

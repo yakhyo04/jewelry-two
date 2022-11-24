@@ -1,17 +1,18 @@
 {{ 'style.cart-snippet.css' | asset_url | stylesheet_tag }}
 
-{% paginate collection.products by 6 %}
+{% paginate collection.products by 9 %}
 <div class="carts">
   {% assign banner_image = collection.metafields.accentuate.banner_image %}
   {% assign banner_content = collection.metafields.accentuate.banner_content %}
+  <div class="cart__wrapper">
   {% for item in (1..banner_content.size) %}
     <div class="cart__additional">
-      <div>
+      <div class="cart__additional--div">
         {% if banner_image[forloop.index0] != blank %}
-          <img src="{{ banner_image[forloop.index0][0].src }}" alt="">
+          <img class="cart__additional--image" src="{{ banner_image[forloop.index0][0].src }}" alt="">
         {% endif %}
       </div>
-      <div>
+      <div class="cart__additional--content">
         {% if banner_content[forloop.index0] != blank %}
           {{ banner_content[forloop.index0] }}
         {% endif %}
@@ -19,23 +20,29 @@
     </div>
   {% endfor %}
 
-<div class="cart__wrapper">
-    {% for product in collection.products %}
-    <div class="cart">
-      <!-- <a class="cart__content" href="{{ product.url }}"> -->
-        <img class="cart__image" src="{{ product.featured_image.src | img_url: 'large' }}" alt="">
-        <div class="cart__content">
-          <h3 class="cart__title">{{ product.title }}</h3>
-          <h4 class="cart__price">{{ product.price | money }}</h4>
-          <h4><a class="cart__link" href="{{ product.url }}">New collection</a></h4>
-        </div>
-      <!-- </a> -->
+  <!-- <div class="cart"> -->
+    <!-- <product-component name="hello" image="https://randomuser.me/api/portraits/men/1.jpg" price="12.000" href="https://google.com" ></product-component> -->
+  <!-- </div> -->
+  
+  <!-- {% render 'product-component' name: '{{ product.title }}' image: "{{ product.featured_image.src | img_url: 'large' }}" price: "{{ product.price | money }}" href: "{{ product.url }}" %} -->
+  
+  {% for product in collection.products %}
+  <product-component name="{{ product.title }}" image="{{ product.featured_image.src | img_url: 'large' }}" price="{{ product.price | money }}" href="{{ product.url }}" ></product-component>
+  {% endfor %}
+  
+  <!-- <div class="cart">
+    <img class="cart__image" src="{{ product.featured_image.src | img_url: 'large' }}" alt="">
+    <div class="cart__content">
+      <h3 class="cart__title">{{ product.title }}</h3>
+      <h4 class="cart__price">{{ product.price | money }}</h4>
+      <h4><a class="cart__link" href="{{ product.url }}">New collection</a></h4>
     </div>
-    {% endfor %}
+  </div> -->
   </div>
 
 </div>
 
+{% if paginate.pages > 1 %}
 <div class="pagination">
   <a href="{{ paginate.previous.url }}" class="pagination__link h4 {% if paginate.previous.url %}pagination-active{% endif %}">previous</a>
   <div class="pagination__content">
@@ -49,4 +56,7 @@
   </div>  
   <a href="{{ paginate.next.url }}" class="pagination__link h4 {% if paginate.next.url %}pagination-active{% endif %}">next</a>
 </div>
+{% endif %}
 {% endpaginate %}
+
+{{ 'script.product-component.js' | asset_url | script_tag }}

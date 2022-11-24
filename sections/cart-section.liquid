@@ -1,0 +1,18 @@
+{{ 'style.cart-section.css' | asset_url | stylesheet_tag }}
+
+<div class="cart-section">
+    <div class="cart-section__container">
+        <span class="cart-section__icon">
+            {% render 'close-icon' %}
+        </span>
+        <h1 class="cart-section__title">Your Cart</h1>
+        <div class="cart-section__products"></div>
+        <div class="cart-section__footer">
+            <h2 class="cart-section__subtotal">Subtotal <span class="cart-section__subtotal--price">$0.00</span></h2>
+            <h4 class="cart-section__description">Shipping and taxes calculated next</h4>
+            <a class="cart-section__cta" href="/checkout"><h4>checkout</h4></a>
+        </div>
+    </div>
+</div>
+
+<!-- {{ 'script.cart.js' | asset_url | script_tag }} -->

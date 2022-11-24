@@ -1,5 +1,242 @@
-{% for item in product.images %}
-    <img src="{{ item.src | img_url: '720x900' }}" alt="{{ item.alt | escape }}">
-{% endfor %}
+{{ 'pdp.css' | asset_url | stylesheet_tag }}
+<!-- Swiper.js -->
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+/>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-<h1>{{ product.title }}</h1>
+<div class="pdp__fullImage">
+    <span class="pdp__fullImage--close">
+        <img src="../assets/close-icon.svg" alt="">
+    </span>
+    {% for item in product.images %}
+    <img class="pdp__fullImage--image" src="{{ item.src | img_url: 'large' }}" alt="{{ item.alt | escape }}">
+    {% endfor %}
+</div>
+
+<div class="product__container">
+<div class="product__row-slider">
+    <div class="swiper mySwiper2 horyzontal__slider">
+      <div class="swiper-wrapper">
+        {% for item in product.images %}
+        <div class="swiper-slide swiper-slide2">
+          <img
+            class="pdp__full--image"
+            src="{{ item.src | img_url: '720x900' }}"
+            loading="lazy"
+            alt="{{ item.alt | escape }}"
+          />
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="swiper mySwiper vertical__slider">
+      <div class="swiper-wrapper">
+        {% for item in product.images %}
+        <div class="swiper-slide">
+          <img
+            src="{{ item.src | img_url: '120x200' }}"
+            loading="lazy"
+            alt="{{ item.alt | escape }}"
+          />
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
+<div class="pdp__content--wrapper">
+    <form data-novariant="{{ product.has_only_default_variant }}" class="product-form" id="AddToCartForm" data-id="{{ product.selling_plan_groups.size }}">
+        <h4 class="product__collection">{{ product.tags[0] }}</h4>
+        <h1 class="pdp__title">{{ product.title }}</h1>
+        <h2 class="pdp__price">{{ product.price | money }}</h2>
+        {% unless product.variants[0].title == 'Default Title' %}
+        <!-- {% for variant in product.variants %}
+        {% assign pricee = variant.price %}
+        {% endfor %} -->
+        <select name="variants" id="variants" class="pdp__select product-variants__list" data-set="{{ product.variants }}" required>
+            <option value="select_size" selected disabled hidden>Select Size</option>
+            {% for variant in product.variants %}
+            {% assign price = variant.price %}
+            {% assign quantity = variant.inventory_quantity %}
+            <option data-variant="{{ variant }}"  class="pdp__option" value="{{ variant.id }}" data-id="{{ variant.id }}"
+            {% if variant == product.selected_or_first_available_variant %}
+              checked
+              {% endif %}
+              {% if quantity <= 0 %}
+              disabled
+              {% endif %}
+            >{{ variant.option1 }}</option>
+            {% endfor %}
+        </select>
+        {% else %}
+        <span data-id="{{ product.variants[0].id }}" class="product-novariant"></span>
+        <script>
+          console.log({{ product.variants[0].id }});
+        </script>
+        {% endunless %}
+
+        <button aria-label="add to cart" class="pdp__button" type="submit" name="add" id="AddToCart">Add to Cart</button>
+
+            <h4>Description</h4>
+            <p>{{ product.description }}</p>
+
+            {% assign product_details = product.metafields.accentuate.product_details %}
+            {% for item in (1..product_details.size) %}
+              <div class="pdp__details">
+                {% if product_details[forloop.index0] != blank %}
+                  {{ product_details[forloop.index0] }}
+                {% endif %}
+              </div>
+        {% endfor %}
+
+        <h4 class="pdp__contactus">Contact us for more information</h4>
+        <h4 class="pdp__contactus">+1 917 509 3777</h4>
+        <h4 class="pdp__contactus--span">info@dgregory.com</h4>
+    </form>
+    
+    <!-- <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" data-id="{{ product.selling_plan_groups.size }}" >
+        <h3 class="product__title">{{ product.title }}</h3>
+        <p class="product__price">{{ current_variant.price | money }}</p>
+      <p class="product__description">{{ product.description }}</p>
+      <div class="variant__cards">
+      {% for variant in product.variants %}
+      {% if variant.available %}
+        {% assign pricee = variant.price %}
+          <div onclick="badgeContainer({{ pricee }})" class="variant__card" value="{{ variant.id }}">
+            <input 
+              class="variant-radio"
+              type="radio" 
+              name="size"
+              id="{{variant.title}}"
+              {% if variant == product.selected_or_first_available_variant %} checked {% endif %}
+              {% if variant.inventory_quantity==0  %} disabled {% endif %} 
+              value="{{ variant.id }}"
+              />  
+            <label 
+              onclick="badgeContainer()"
+              id="{{ variant.id }}"
+              data-variantId="{{ variant.id }}" 
+              data-variantPrice="{% if variant.inventory_quantity != 0 %} {{pricee}} {% endif %}" 
+              for="{{variant.title}}" 
+              class="variant 
+              {% if variant.inventory_quantity==0  %} disabled {% endif %}"
+            >
+                {{variant.title}}
+            </label>
+          </div>
+          {% else %}
+          <div disabled="disabled" class="disabled">
+            {{ variant.title }}
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <script>
+          console.log({{ product | json }})
+        </script>
+        {% if product.selling_plan_groups.size >= 1 %}
+        <div class="recharge__div">
+          <label class="recharge__onetime recharge__label">
+            <input checked type="radio" class="recharge-option" name="one" value="{{ product.selected_or_first_available_variant.id }}">
+            <span class="recharge-text">{{ 'general.pdp.onetime_option' | t }}</span>
+          </label>
+          <label class="recharge__checked recharge__label">
+            {%- assign new_price = product.variants[0].selling_plan_allocations[0].price | money -%}
+            <input type="radio" id="subscribe" class="recharge-option" name="one" value="subscribe">
+            <span class="recharge-text">{{ 'general.pdp.subscribe_text' | t }} <span class="subscribe-price">{{ new_price }}</span></span>
+          </label>
+        </div> 
+        <div class="recharge-frequency" hidden>
+          <p class="recharge__text">{{ 'general.pdp.recharge_text' | t }}</p>
+          <h4 class="recharge__title">{{ 'general.pdp.recharge_title' | t }}</h4>
+          <div class="recharge__frequency--div">
+          {% for item in product.selling_plan_groups[0].selling_plans %}
+          <script>
+            console.log({{ product.selling_plan_groups[0].selling_plans | json }})
+          </script>
+          <label class="recharge-frequency-label" >
+            <input {% if forloop.index == 1 %} checked {% endif %} type="radio" class="recharge-frequency-option" name="freq" id="{{ product.selected_or_first_available_variant.id }}" value="{{ item.id }}">
+            <span class="recharge-frequency-text">{{ item.name | remove: 'Delivery every' }}</span>
+          </label>
+          {% endfor %}
+        </div>
+        </div>
+        {% else %}
+          <h2>''</h2>
+        {% endif %}
+        <div class="rc-widget-injection-parent"></div>
+    <button aria-label="add to cart" class="product__button" type="submit" name="add" id="AddToCart">Add to Cart</button>
+  </form> -->
+
+</div>
+</div>
+  
+      
+{{ 'script.cart.js' | asset_url | script_tag }}
+      
+
+<script>
+        
+  
+var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 10,
+    slidesPerView: 3,
+    // loop: true,
+    direction: "vertical",
+  });
+  var swiper2 = new Swiper(".mySwiper2", {
+    spaceBetween: 10,
+    effect: "cube",
+    pagination: {
+      el: ".swiper-pagination",
+      dynamicBullets: true,
+    },
+    cubeEffect: {
+      shadow: false,
+      slideShadows: false,
+    },
+    // loop: true,  
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+      swiper: swiper,
+    },
+  });
+      
+
+
+  const opt = {
+    style: 'currency',
+    currency: 'USD'
+    };
+    const select = document.querySelector('.pdp__select');
+    const options = document.querySelectorAll('.pdp__option');
+    const productTitle = document.querySelector('.pdp__title');
+    const productPrice = document.querySelector('.pdp__price');
+    
+    
+    
+    console.log(options);
+    
+    select.addEventListener('change', (e) => {
+      const productVariants = {{ product.variants | json }};
+    productVariants.forEach(variant => {
+      if (variant.id == e.target.value) {
+        productTitle.innerText = variant.name
+          ? variant.name
+          : "{{ product.title }}"
+        const varaintPrice = new Intl.NumberFormat('en-US', opt).format(variant.price / 100);
+        productPrice.innerText = `${varaintPrice}`
+      }
+    })
+    })
+    
+    const variantId = document.querySelector(".product-variants__list").value;
+    console.log(variantId);
+
+</script>
