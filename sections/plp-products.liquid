@@ -19,15 +19,11 @@
       </div>
     </div>
   {% endfor %}
-
-  <!-- <div class="cart"> -->
-    <!-- <product-component name="hello" image="https://randomuser.me/api/portraits/men/1.jpg" price="12.000" href="https://google.com" ></product-component> -->
-  <!-- </div> -->
   
-  <!-- {% render 'product-component' name: '{{ product.title }}' image: "{{ product.featured_image.src | img_url: 'large' }}" price: "{{ product.price | money }}" href: "{{ product.url }}" %} -->
+  
   
   {% for product in collection.products %}
-  <product-component name="{{ product.title }}" image="{{ product.featured_image.src | img_url: 'large' }}" price="{{ product.price | money }}" href="{{ product.url }}" ></product-component>
+      <product-component name="{{ product.title }}" image="{{ product.featured_image.src | img_url: 'large' }}" price="{{ product.price | money }}" href="{{ product.url }}" ></product-component>
   {% endfor %}
   
   <!-- <div class="cart">
